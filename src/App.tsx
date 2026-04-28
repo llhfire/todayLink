@@ -87,15 +87,37 @@ export default function App() {
                 
                 {/* Dropdown Menu */}
                 {item.sub && (
-                  <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 py-3 z-50">
                     {item.sub.map((subItem, idx) => (
-                      <a 
-                        key={idx}
-                        href="#" 
-                        className="block px-6 py-2.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors font-medium"
-                      >
-                        {subItem}
-                      </a>
+                      <div key={idx} className="relative group/sub">
+                        {typeof subItem === 'string' ? (
+                          <a 
+                            href="#" 
+                            className="block px-6 py-2.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors font-medium"
+                          >
+                            {subItem}
+                          </a>
+                        ) : (
+                          <>
+                            <div className="flex items-center justify-between px-6 py-2.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors font-medium cursor-pointer">
+                              <span>{subItem.label}</span>
+                              <ChevronRight className="w-3 h-3" />
+                            </div>
+                            {/* 3rd Level Menu */}
+                            <div className="absolute left-full top-0 ml-1 w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 opacity-0 invisible group-hover/sub:opacity-100 group-hover/sub:visible transition-all translate-x-2 group-hover/sub:translate-x-0 py-3">
+                              {subItem.sub?.map((deepItem, dIdx) => (
+                                <a 
+                                  key={dIdx}
+                                  href="#" 
+                                  className="block px-6 py-2.5 text-sm text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors font-medium"
+                                >
+                                  {typeof deepItem === 'string' ? deepItem : deepItem.label}
+                                </a>
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </div>
                     ))}
                   </div>
                 )}
@@ -163,14 +185,35 @@ export default function App() {
                   {item.sub && (
                     <div className="pl-4 pb-2 flex flex-col gap-2 mt-1">
                       {item.sub.map((subItem, idx) => (
-                        <a 
-                          key={idx}
-                          href="#"
-                          onClick={() => setIsMenuOpen(false)}
-                          className="text-sm text-slate-500 font-medium py-1"
-                        >
-                          {subItem}
-                        </a>
+                        <div key={idx}>
+                          {typeof subItem === 'string' ? (
+                            <a 
+                              href="#"
+                              onClick={() => setIsMenuOpen(false)}
+                              className="text-sm text-slate-500 font-medium py-1 block"
+                            >
+                              {subItem}
+                            </a>
+                          ) : (
+                            <div className="flex flex-col gap-2">
+                              <span className="text-sm text-slate-800 font-bold py-1 block border-l-2 border-indigo-200 pl-2">
+                                {subItem.label}
+                              </span>
+                              <div className="pl-4 flex flex-col gap-2 border-l border-slate-100 ml-1">
+                                {subItem.sub?.map((deepItem, dIdx) => (
+                                  <a 
+                                    key={dIdx}
+                                    href="#"
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="text-xs text-slate-400 font-medium py-1"
+                                  >
+                                    {typeof deepItem === 'string' ? deepItem : deepItem.label}
+                                  </a>
+                                ))}
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}

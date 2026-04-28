@@ -1,14 +1,19 @@
 
 export type Language = 'tc' | 'en' | 'sc';
 
+export interface NavItem {
+  label: string;
+  sub?: (string | NavItem)[];
+}
+
 export interface ContentType {
   nav: {
     home: string;
-    immigration: { label: string; sub: string[] };
+    immigration: NavItem;
     education: string;
-    investment: { label: string; sub: string[] };
-    corporate: { label: string; sub: string[] };
-    overseas: { label: string; sub: string[] };
+    investment: NavItem;
+    corporate: NavItem;
+    overseas: NavItem;
     news: string;
     cta: string;
   };
@@ -65,7 +70,16 @@ export const translations: Record<Language, ContentType> = {
       immigration: { label: '全球移民', sub: ['投資移民', '商業移民', '技術移民', '留學轉移民'] },
       education: '國際教育',
       investment: { label: '環球投資', sub: ['海外房產', '海外銀行開戶', '全球股票', '海外基金', '海外保險', '家族財富'] },
-      corporate: { label: '企業出海', sub: ['商務秘書 (企業架構, 註冊, 開戶)', '一站式出海陪跑', '海外資產/上市', '企業托管', '物流服務'] },
+      corporate: { 
+        label: '企業出海', 
+        sub: [
+          { label: '商務秘書', sub: ['企業架構', '公司註冊', '公司開戶'] },
+          '一站式出海陪跑', 
+          '海外投資/上市', 
+          '企業托管', 
+          '物流服務'
+        ] 
+      },
       overseas: { label: '海外服務', sub: ['國家認證', '工簽服務'] },
       news: '海外資訊',
       cta: '立即諮詢',
@@ -128,7 +142,7 @@ export const translations: Record<Language, ContentType> = {
       { q: '申請失敗會退費嗎？', a: '我們承諾申請失敗全額退還服務費，降低客戶風險。' },
     ],
     footer: {
-      address: '香港中環德輔道中XX號XX大廈XX樓',
+      address: '香港九龍尖沙咀港威大廈第五座27樓',
       phone: '+852 1234 5678',
       email: 'info@todaylink.hk',
       brn: 'BRN: 12345678-000',
@@ -142,7 +156,16 @@ export const translations: Record<Language, ContentType> = {
       immigration: { label: 'Migration', sub: ['Investment', 'Business', 'Skilled', 'Study to PR'] },
       education: 'Education',
       investment: { label: 'Global Inv.', sub: ['Real Estate', 'Bank Account', 'Stocks', 'Funds', 'Insurance', 'Family Wealth'] },
-      corporate: { label: 'Overseas Biz', sub: ['Secretarial (Corp Structure, Reg, Bank)', 'All-in-one Setup', 'Investment/Listing', 'Corp Trustee', 'Logistics'] },
+      corporate: { 
+        label: 'Overseas Biz', 
+        sub: [
+          { label: 'Secretarial', sub: ['Corp Structure', 'Registration', 'Bank Account'] },
+          'All-in-one Setup', 
+          'Investment/Listing', 
+          'Corp Trustee', 
+          'Logistics'
+        ] 
+      },
       overseas: { label: 'Services', sub: ['Certification', 'Work Visa'] },
       news: 'Latest Info',
       cta: 'Consult Now',
@@ -205,7 +228,7 @@ export const translations: Record<Language, ContentType> = {
       { q: 'Refund if failed?', a: 'Full refund of service fees guaranteed if the application is not successful.' },
     ],
     footer: {
-      address: 'XX/F, XX Building, Des Voeux Road Central, HK',
+      address: '27/F, Tower 5, The Gateway, Tsim Sha Tsui, Kowloon, Hong Kong',
       phone: '+852 1234 5678',
       email: 'info@todaylink.hk',
       brn: 'BRN: 12345678-000',
@@ -219,7 +242,16 @@ export const translations: Record<Language, ContentType> = {
       immigration: { label: '全球移民', sub: ['投资移民', '商业移民', '技术移民', '留学转移民'] },
       education: '国际教育',
       investment: { label: '环球投资', sub: ['海外房产', '海外银行开户', '全球股票', '海外基金', '海外保险', '家族财富'] },
-      corporate: { label: '企业出海', sub: ['商务秘书 (企业架构, 注册, 开户)', '一站式出海陪跑', '海外股资/上市', '企业托管', '物流服务'] },
+      corporate: { 
+        label: '企业出海', 
+        sub: [
+          { label: '商务秘书', sub: ['企业架构', '公司注册', '公司开户'] },
+          '一站式出海陪跑', 
+          '海外股资/上市', 
+          '企业托管', 
+          '物流服务'
+        ] 
+      },
       overseas: { label: '海外服务', sub: ['国家认证', '工签服务'] },
       news: '海外资讯',
       cta: '立即咨询',
@@ -282,7 +314,7 @@ export const translations: Record<Language, ContentType> = {
       { q: '申请失败会退费吗？', a: '我们承诺申请失败全额退还服务费，降低客户风险。' },
     ],
     footer: {
-      address: '香港中环德辅道中XX号XX大厦XX楼',
+      address: '香港九龙尖沙咀港威大厦第五座27楼',
       phone: '+852 1234 5678',
       email: 'info@todaylink.hk',
       brn: 'BRN: 12345678-000',
