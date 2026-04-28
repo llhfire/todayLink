@@ -63,11 +63,13 @@ export default function App() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-200">
-              TL
-            </div>
-            <span className="text-xl font-bold tracking-tight text-slate-900">今日智聯</span>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/logo.png" 
+              alt="今日智聯 Neolink Logo" 
+              className="h-10 w-auto"
+              referrerPolicy="no-referrer"
+            />
           </div>
 
           {/* Desktop Nav */}
@@ -589,10 +591,12 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
             <div className="col-span-1 md:col-span-1">
               <div className="flex items-center gap-2 mb-8">
-                <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
-                  TL
-                </div>
-                <span className="text-xl font-bold tracking-tight text-slate-900">今日智聯</span>
+                <img 
+                  src="/logo.png" 
+                  alt="今日智聯 Neolink Logo" 
+                  className="h-10 w-auto"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <p className="text-slate-500 mb-8 max-w-xs">
                 數十載經驗積累，致力於打破信息壁壘。一站式高品質香港服務。
